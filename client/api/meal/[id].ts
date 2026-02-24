@@ -1,5 +1,3 @@
-export const config = { runtime: "nodejs18.x" };
-
 import { forward } from "../_mealdb";
 
 export default async function handler(req: any, res: any) {

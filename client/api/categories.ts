@@ -1,5 +1,3 @@
-export const config = { runtime: "nodejs18.x" };
-
 import { forward, getCategoriesCache, setCategoriesCache } from "./_mealdb";
 
 export default async function handler(_req: any, res: any) {
