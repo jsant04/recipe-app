@@ -1,7 +1,8 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+export const config = { runtime: "nodejs18.x" };
+
 import { forward, getCategoriesCache, setCategoriesCache } from "./_mealdb";
 
-export default async function handler(_req: VercelRequest, res: VercelResponse) {
+export default async function handler(_req: any, res: any) {
   if (_req.method !== "GET") {
     return res.status(405).json({ error: "Method not allowed" });
   }
