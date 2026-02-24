@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Recipes PWA Icon</title>
+  <desc id="desc">Minimal cooking pot icon placeholder</desc>
+  <rect width="512" height="512" rx="96" fill="#0f172a" />
+  <rect x="96" y="192" width="320" height="192" rx="48" fill="#22c55e" />
+  <rect x="144" y="152" width="224" height="40" rx="20" fill="#e5e7eb" />
+</svg>
