@@ -20,7 +20,9 @@ export interface Category {
   strCategoryDescription: string;
 }
 
-const API_BASE = "/api";
+// In production we can safely call TheMealDB directly since the demo key "1" is public.
+// This avoids needing a custom backend on Vercel for now.
+const API_BASE = "https://www.themealdb.com/api/json/v1/1";
 
 async function handleResponse<T>(res: Response): Promise<T> {
   if (!res.ok) {
@@ -30,28 +32,32 @@ async function handleResponse<T>(res: Response): Promise<T> {
 }
 
 export async function searchMeals(query: string) {
-  const res = await fetch(`${API_BASE}/search?q=${encodeURIComponent(query)}`);
+  const res = await fetch(
+    `${API_BASE}/search.php?s=${encodeURIComponent(query)}`
+  );
   return handleResponse<{ meals: MealSummary[] | null }>(res);
 }
 
 export async function getMealById(id: string) {
-  const res = await fetch(`${API_BASE}/meal/${encodeURIComponent(id)}`);
+  const res = await fetch(
+    `${API_BASE}/lookup.php?i=${encodeURIComponent(id)}`
+  );
   return handleResponse<{ meals: MealDetail[] | null }>(res);
 }
 
 export async function getCategories() {
-  const res = await fetch(`${API_BASE}/categories`);
+  const res = await fetch(`${API_BASE}/categories.php`);
   return handleResponse<{ categories: Category[] | null }>(res);
 }
 
 export async function getMealsByCategory(category: string) {
   const res = await fetch(
-    `${API_BASE}/filter?c=${encodeURIComponent(category)}`
+    `${API_BASE}/filter.php?c=${encodeURIComponent(category)}`
   );
   return handleResponse<{ meals: MealSummary[] | null }>(res);
 }
 
 export async function getRandomMeal() {
-  const res = await fetch(`${API_BASE}/random`);
+  const res = await fetch(`${API_BASE}/random.php`);
   return handleResponse<{ meals: MealDetail[] | null }>(res);
 }
